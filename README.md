@@ -1,16 +1,10 @@
-# car_dashboard
+# Car Dashboard Home Page
 
-A new Flutter project.
+This is the homepage of a car dashboard app built using Flutter. It showcases the vehicle's details, a start engine button, and features like controlling the car, checking status, and finding accessories.
 
-## Getting Started
+## Features
+- Display car details (e.g., ID, model).
+- Show car image and its status (Parked, last updated).
+- Start Engine button with a circular design.
+- Feature cards for control panel, check status, and more.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

@@ -16,7 +16,7 @@ class CarDashboardApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CarDashboardPage(), // Start the app with CarDashboardPage from home.dart
+      home: CarDashboardPage(),
 
     );
   }

@@ -5,160 +5,159 @@ class CarDashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton( // The menu icon on the left
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            // Define your menu logic here
-          },
+
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 30.0),
+          child: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              // Define  menu here
+            },
+          ),
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () {
+              // Define  notification here
+            },
           ),
           IconButton(
             icon: Icon(Icons.headset),
             onPressed: () {
-              // Define your headphone logic here
+
             },
           ),
         ],
       ),
       body: SingleChildScrollView(  // Wrap the content with SingleChildScrollView
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Car image with text below it
-            Positioned(
-              top: 20,
-              left: 0,
-              right: 0,
+
+            SizedBox(height: 20),
+            Row(
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 45.0),
+                  child: Image.asset(
+                    'assets/brand.png',
+                    width: 40.0,
+                    height: 40.0,
+                  ),
+                ),
+                SizedBox(width: 10),
+
+                Text(
+                  "Chi-Ka-102-153",
+                  style: TextStyle(fontSize: 18, color: Colors.brown.withOpacity(0.5)),
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 45.0),
+              child: Text(
+                "TOYOTA COROLLA",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.brown.withOpacity(.8),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+
+
+            Center(
+              child: Image.asset(
+                'assets/car_image.jpg',
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 10),
+
+
+            Center(
               child: Column(
                 children: [
-                  Image.asset(
-                    'assets/car_image.jpg',  // Add the car image in assets folder
-                    height: 250,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(height: 10),
                   Text(
                     "Parked",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                   Text(
-                    "Updated at 4:30 pm 24th June, 2025",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    "Updated at 3:37 am 3rd May, 2025",
+                    style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
                 ],
               ),
             ),
-            // Semi-transparent overlay
-            Positioned.fill(
-              child: Container(
-                color: Colors.black.withOpacity(0.4),
-              ),
+            SizedBox(height: 30),
+
+            // Start Engine Button
+            Center(
+              child: _buildStartEngineButton(),
             ),
-            // Content below the image
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Vehicle Details
-                  Text(
-                    "Chi-Ka-102-153",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  Text(
-                    "TOYOTA COROLLA",
+            SizedBox(height: 30),
 
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  // Stats
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildStatCard("2,389 mi", "Miles Driven"),
-                      _buildStatCard("87%", "Fuel Reserve"),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  // Start Engine Button
-                  Center(
-                    child: _buildStartEngineButton(),
-                  ),
-                  SizedBox(height: 30),
-                  // Features Section
-
-                  SizedBox(height: 10),
-                  // Feature Cards
-                  Column(
-                    children: [
-                      _buildFeatureCard(
-                        Icons.settings,
-                        "Control Panel",
-                        "Control different features of your car with a click",
-                            () => Navigator.pushNamed(context, '/controlPanel'),
-                      ),
-                      _buildFeatureCard(
-                        Icons.trending_up,
-                        "Check Status",
-                        "Check your vehicle’s status for performance Boost",
-                            () => Navigator.pushNamed(context, '/checkStatus'),
-                      ),
-                      _buildFeatureCard(
-                        Icons.location_on,
-                        "Find My Vehicle",
-                        "Find your car on map",
-                            () => Navigator.pushNamed(context, '/findMyVehicle'),
-                      ),
-                      _buildFeatureCard(
-                        Icons.health_and_safety,
-                        "Smart Health Check",
-                        "Get AI-powered insights on your vehicle’s current condition",
-                            () => Navigator.pushNamed(context, '/smartHealthCheck'),
-                      ),
-                      _buildFeatureCard(
-                        Icons.directions_car,
-                        "Recommended Accessories",
-                        "Browse parts and upgrades tailored for your specific model",
-                            () => Navigator.pushNamed(context, '/recommendedAccessories'),
-                      ),
-
-                    ],
-                  ),
-                ],
-              ),
-
+            // Feature Cards Section
+            _buildFeatureCard(
+              "assets/control.png",
+              "Control Panel",
+              "Control different features of your car with a click",
+              Colors.white10,
+                  () => Navigator.pushNamed(context, '/controlPanel'),
             ),
-
+            _buildFeatureCard(
+              "assets/check_status.png",
+              "Check Status",
+              "Check your vehicle’s status for performance Boost",
+              Colors.white10,
+                  () => Navigator.pushNamed(context, '/checkStatus'),
+            ),
+            _buildFeatureCard(
+              "assets/location.png",
+              "Find My Vehicle",
+              "Find your car on map",
+              Colors.white10,
+                  () => Navigator.pushNamed(context, '/findMyVehicle'),
+            ),
+            _buildFeatureCard(
+              "assets/a.png",
+              "Smart Health Check",
+              "Get AI-powered insights on your vehicle’s current condition",
+              Colors.white10,
+                  () => Navigator.pushNamed(context, '/smartHealthCheck'),
+            ),
+            _buildFeatureCard(
+              "assets/abc.png",
+              "Recommended Accessories",
+              "Browse parts and upgrades tailored for your specific model",
+              Colors.white10,
+                  () => Navigator.pushNamed(context, '/recommendedAccessories'),
+            ),
           ],
-
         ),
-
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
-  // Circular Start Engine Button with gradient
+  //  Start Engine Button
   Widget _buildStartEngineButton() {
     return Container(
       width: 150,
       height: 150,
       decoration: BoxDecoration(
-        color: Colors.blueAccent,
+        color: Colors.grey[300], // Outer circle
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
@@ -168,120 +167,115 @@ class CarDashboardPage extends StatelessWidget {
           ),
         ],
       ),
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          "Start Engine",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        style: ElevatedButton.styleFrom(
-          shape: CircleBorder(), backgroundColor: Colors.blue[100],
-          padding: EdgeInsets.all(20),
-          shadowColor: Colors.black.withOpacity(0.3),
-        ),
-      ),
-    );
-  }
-
-  // Stat card for displaying "Miles Driven" and "Fuel Reserve"
-  Widget _buildStatCard(String value, String label) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+      child: Center(
+        child: Container(
+          width: 120,  // Inner circle
+          height: 120,
+          decoration: BoxDecoration(
+            color: Colors.grey[500],
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(), backgroundColor: Colors.transparent,
+                padding: EdgeInsets.all(0),
+                shadowColor: Colors.transparent,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Start",
+                    style: TextStyle(
+                      fontSize: 16,  // Adjust font size
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    "Engine",
+                    style: TextStyle(
+                      fontSize: 16,  // Adjust font size
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        SizedBox(height: 5),
-        Text(
-          label,
-          style: TextStyle(fontSize: 16, color: Colors.white),
-        ),
-      ],
-    );
-  }
-
-  // Section title widget
-  Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
       ),
     );
   }
 
-  // Feature card widget with icon, label, and description
-  Widget _buildFeatureCard(IconData icon, String label, String description, Function onPressed) {
+  // Feature card widget
+  Widget _buildFeatureCard(String imagePath, String label, String description, Color backgroundColor, Function onPressed) {
     return GestureDetector(
       onTap: () => onPressed(),
       child: Card(
         margin: EdgeInsets.symmetric(vertical: 8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 5,
+        color: backgroundColor,
         child: ListTile(
-          leading: Icon(icon, size: 40, color: Colors.blueAccent),
+          leading: Image.asset(imagePath, width: 40, height: 40),
           title: Text(
             label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           subtitle: Text(
             description,
-            style: TextStyle(fontSize: 14, color: Colors.grey),
+            style: TextStyle(fontSize: 14, color: Colors.black),
           ),
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
         ),
       ),
     );
   }
-}
 
-// Bottom navigation bar widget
-Widget _buildBottomNavigationBar() {
-  return BottomNavigationBar(
-    items: [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.directions_car), // Car icon
-        label: '',
-        backgroundColor: Colors.grey[200], // Optional background color
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.person), // User icon
-        label: '',
-        backgroundColor: Colors.grey[200], // Optional background color
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.search), // Search icon
-        label: '',
-        backgroundColor: Colors.grey[200], // Optional background color
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart), // Cart icon
-        label: '',
-        backgroundColor: Colors.grey[200], // Optional background color
-      ),
-      BottomNavigationBarItem(
-        icon: Image.asset(
-          'assets/car_icon.jpg',  // Use the .jpg image
-          width: 40.0,  // Set the size
-          height: 40.0,
+  // Bottom navigation bar widget
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      backgroundColor: Colors.white10,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.directions_car), // Car icon
+          label: '',
+          backgroundColor: Colors.grey[100],
         ),
-        label: '',
- // Optional background color
-      ),
-    ],
-    type: BottomNavigationBarType.fixed, // Make the items stay fixed
-    currentIndex: 0, // Set the initial index (which icon is active)
-    selectedItemColor: Colors.blueAccent, // Color when item is selected
-    unselectedItemColor: Colors.grey, // Color for unselected items
-    onTap: (index) {
-      // Handle navigation here based on index
-      // For example, you could use Navigator.push to go to other pages
-    },
-  );
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person), // User icon
+          label: '',
+
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search),
+          label: '',
+
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart),
+          label: '',
+
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            'assets/car_icon.png',
+            width: 22.0,
+            height: 22.0,
+          ),
+          label: '',
+        ),
+      ],
+      type: BottomNavigationBarType.fixed,
+      currentIndex: 0,
+      selectedItemColor: Colors.brown,
+      onTap: (index) {
+
+      },
+    );
+  }
 }
